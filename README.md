@@ -17,3 +17,5 @@ if it doesnt work as intented, do:
 ```
 docker compose down -v && docker compose up --build
 ```
+
+since its work in progress currently due to user conflict, transactions page cant fetch data. Will be fixed later.
