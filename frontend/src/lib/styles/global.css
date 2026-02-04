@@ -1,0 +1,125 @@
+:root {
+	/* Colors */
+	--color-primary: #6366f1;
+	--color-primary-hover: #4f46e5;
+	--color-success: #22c55e;
+	--color-danger: #ef4444;
+	--color-warning: #f59e0b;
+
+	/* Neutrals */
+	--color-bg: #f8fafc;
+	--color-surface: #ffffff;
+	--color-border: #e2e8f0;
+	--color-text: #1e293b;
+	--color-text-muted: #64748b;
+
+	/* Spacing */
+	--spacing-xs: 0.25rem;
+	--spacing-sm: 0.5rem;
+	--spacing-md: 1rem;
+	--spacing-lg: 1.5rem;
+	--spacing-xl: 2rem;
+	--spacing-2xl: 3rem;
+
+	/* Border Radius */
+	--radius-sm: 0.25rem;
+	--radius-md: 0.5rem;
+	--radius-lg: 1rem;
+
+	/* Shadows */
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+	--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+	/* Font */
+	--font-sans: system-ui, -apple-system, sans-serif;
+}
+
+/* Reset & Base Styles */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-family: var(--font-sans);
+	font-size: 16px;
+	color: var(--color-text);
+	background: var(--color-bg);
+}
+
+body {
+	min-height: 100vh;
+	line-height: 1.5;
+}
+
+a {
+	color: var(--color-primary);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* Utility Classes */
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 var(--spacing-md);
+}
+
+.card {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	padding: var(--spacing-lg);
+	box-shadow: var(--shadow-sm);
+}
+
+.text-success {
+	color: var(--color-success);
+}
+.text-danger {
+	color: var(--color-danger);
+}
+.text-muted {
+	color: var(--color-text-muted);
+}
+
+.flex {
+	display: flex;
+}
+.flex-col {
+	flex-direction: column;
+}
+.items-center {
+	align-items: center;
+}
+.justify-between {
+	justify-content: space-between;
+}
+.gap-sm {
+	gap: var(--spacing-sm);
+}
+.gap-md {
+	gap: var(--spacing-md);
+}
+.gap-lg {
+	gap: var(--spacing-lg);
+}
+
+.mt-sm {
+	margin-top: var(--spacing-sm);
+}
+.mt-md {
+	margin-top: var(--spacing-md);
+}
+.mt-lg {
+	margin-top: var(--spacing-lg);
+}
+.mb-md {
+	margin-bottom: var(--spacing-md);
+}
