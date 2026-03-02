@@ -18,4 +18,27 @@ if it doesnt work as intented, do:
 docker compose down -v && docker compose up --build
 ```
 
+**note**: As of commit `bd37cc0`, the build artifacts are automated to dockerhub on any git push through github actions CI. So you can run this program through docker. <br>
+create a docker-compose.yml
+```dockerfile
+services:
+  backend:
+    image: manuach/monitor-my-money-backend:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=0
+      - ALLOWED_HOST=localhost,127.0.0.1,backend
+
+  frontend:
+    image: manuach/monitor-my-money-frontend:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - PUBLIC_API_URL=http://localhost:8000/api
+```
+
+
 since its work in progress currently due to user conflict, transactions page cant fetch data. Will be fixed later.
