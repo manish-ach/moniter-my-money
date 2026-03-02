@@ -18,8 +18,9 @@ if it doesnt work as intented, do:
 docker compose down -v && docker compose up --build
 ```
 
-**note**: As of commit `bd37cc0`, the build artifacts are automated to dockerhub on any git push through github actions CI. So you can run this program through docker. <br>
-create a docker-compose.yml
+**note**: As of commit `bd37cc0`, the build artifacts are automated to dockerhub on any git push through github actions CI. So you can run this program through docker. Either,
+
+- create a `docker-compose.yml`
 ```dockerfile
 services:
   backend:
@@ -39,6 +40,17 @@ services:
     environment:
       - PUBLIC_API_URL=http://localhost:8000/api
 ```
+Then run `docker compose up` on the .yml file directory
 
+- OR, manually run it in terminal
+```
+docker run -dp 8000:8000 manuach/monitor-my-money-backend:latest
+```
+and,
+```
+docker run -dp 3000:3000 -e PUBLIC_API_URL=http://localhost:8000/api manuach/monitor-my-money-frontend:latest
+```
+
+*Dont use manual method unless you know how to stops running container and remove the unused images(remove the unused images btw)*
 
 since its work in progress currently due to user conflict, transactions page cant fetch data. Will be fixed later.
