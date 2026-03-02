@@ -35,7 +35,7 @@
 	{/if}
 	<select id={selectID} bind:value {required}>
 		<option value="" disabled>{placeholder}</option>
-		{#each options as opt}
+		{#each options as opt (opt.value)}
 			<option value={opt.value}>{opt.label}</option>
 		{/each}
 	</select>

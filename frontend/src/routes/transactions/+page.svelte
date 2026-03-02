@@ -5,7 +5,6 @@
 	import Button from '$lib/components/ui/Button.svelte';
 	import Modal from '$lib/components/ui/Modal.svelte';
 	import TransactionForm from '$lib/components/transactions/TransactionForm.svelte';
-	import Card from '$lib/components/ui/Card.svelte';
 
 	let transactions: Transaction[] = $state([]);
 	let loading = $state(true);
@@ -37,19 +36,19 @@
 			await createTransaction(data);
 			showModal = false;
 			await loadTransactions();
-		} catch (e) {
+		} catch {
 			alert('Failed to create transaction');
 		}
 	}
 
 	async function handleDelete(id: number) {
-		if (deleteTargetId === null) return;
+		if (id === null) return;
 		try {
-			await deleteTransaction(deleteTargetId);
+			await deleteTransaction(id);
 			showDeleteConfirm = false;
 			deleteTargetId = null;
 			await loadTransactions();
-		} catch (e) {
+		} catch {
 			alert('Failed to delete transaction');
 		}
 	}
@@ -92,7 +91,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each transactions as t}
+				{#each transactions as t (t.id)}
 					<tr>
 						<td>{t.date}</td>
 						<td>

@@ -1,13 +1,16 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { resolve } from '$app/paths';
 </script>
 
 <nav class="navbar">
 	<div class="container">
-		<a href="/" class="logo">Budget Tracker</a>
+		<a href={resolve('/')} class="logo">Budget Tracker</a>
 		<div class="nav-links">
-			<a href="/" class:active={$page.url.pathname === '/'}>Dashboard</a>
-			<a href="/transactions" class:active={$page.url.pathname === '/transactions'}>Transactions</a>
+			<a href={resolve('/')} class:active={$page.url.pathname === '/'}>Dashboard</a>
+			<a href={resolve('/transactions')} class:active={$page.url.pathname === '/transactions'}
+				>Transactions</a
+			>
 		</div>
 	</div>
 </nav>

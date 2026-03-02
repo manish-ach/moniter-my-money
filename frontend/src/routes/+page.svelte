@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { resolve } from '$app/paths';
 	import { getTransactions } from '$lib/api/budget';
 	import type { Transaction } from '$lib/types/transaction';
 	import Card from '$lib/components/ui/Card.svelte';
@@ -67,16 +68,18 @@
 	<div class="mt-lg">
 		<div class="section-header">
 			<h2>Recent Transactions</h2>
-			<a href="/transactions">View all →</a>
+			<a href={resolve('/transactions')}>View all →</a>
 		</div>
 
 		{#if recentTransactions.length === 0}
 			<Card>
-				<p class="text-muted">No transactions yet. <a href="/transactions">Add one!</a></p>
+				<p class="text-muted">
+					No transactions yet. <a href={resolve('/transactions')}>Add one!</a>
+				</p>
 			</Card>
 		{:else}
 			<Card>
-				{#each recentTransactions as t}
+				{#each recentTransactions as t (t.id)}
 					<div class="transaction-row">
 						<div>
 							<strong>{formatCategory(t.category)}</strong>
